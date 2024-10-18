@@ -26,7 +26,7 @@ connectDB();
 
 app.use('/api/users', userRoutes);
 app.use('/api/notes', noteRoutes);
-app.use('/api/notes', pubgRoutes);
+app.use('/api/pubg', pubgRoutes);
 
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
