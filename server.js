@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes.js';
 import noteRoutes from './routes/noteRoutes.js';
 import pubgRoutes from './routes/pubgRoutes.js';
+import tiktokRoutes from './routes/tiktokRoutes.js';
 import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -27,6 +28,7 @@ connectDB();
 app.use('/api/users', userRoutes);
 app.use('/api/notes', noteRoutes);
 app.use('/api/pubg', pubgRoutes);
+app.use('/api/tiktok', tiktokRoutes);
 
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
