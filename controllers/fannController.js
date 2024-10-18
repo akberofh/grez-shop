@@ -1,31 +1,31 @@
-import NoteModel from "../models/noteModel.js";
+import FannModel from "../models/fannModel.js";
 
-const notePost = async (req, res) => {
+const fannPost = async (req, res) => {
   const { title, description, thumbnail, price,distance ,catagory} = req.body;
 
   try {
-    const note = await NoteModel.create({ title, description, thumbnail,price ,distance ,catagory});
-    res.status(201).json({ note });
+    const fann = await FannModel.create({ title, description, thumbnail,price ,distance ,catagory});
+    res.status(201).json({ fann });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-const getNote = async (req, res) => {
+const getFann = async (req, res) => {
   try {
-    const allNotes = await NoteModel.find();
-    res.json({ allNotes });
+    const allFanns = await FannModel.find();
+    res.json({ allFanns });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-const getByIdNote = async (req, res) => {
+const getByIdFann = async (req, res) => {
   const { id } = req.params;
   try {
-    const getById = await NoteModel.findById(id);
+    const getById = await FannModel.findById(id);
     if (!getById) {
       return res.status(404).json({ error: "Note not found" });
     }
@@ -40,7 +40,7 @@ const deleteById = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const deletedData = await NoteModel.findOneAndDelete({ _id: id });
+    const deletedData = await FannModel.findOneAndDelete({ _id: id });
     if (!deletedData) {
       return res.status(404).json({ error: "Note not found" });
     }
@@ -51,4 +51,4 @@ const deleteById = async (req, res) => {
   }
 };
 
-export { notePost, getNote, getByIdNote, deleteById };
+export { fannPost, getFann, getByIdFann, deleteById };

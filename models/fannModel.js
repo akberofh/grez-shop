@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const noteModel = mongoose.Schema({
+const fannModel = mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -24,6 +24,6 @@ const noteModel = mongoose.Schema({
   timestamps: true
 });
 
-const NoteModel = mongoose.model("Note", noteModel);
+const FannModel = mongoose.model("fann", fannModel);
 
-export default NoteModel;
+export default FannModel;

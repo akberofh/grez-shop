@@ -1,14 +1,14 @@
 import express from 'express'
-import { deleteById, getByIdNote, getNote, notePost } from '../controllers/noteController.js'
+import { deleteById, getByIdFann, getFann, fannPost } from '../controllers/fannController.js'
 
 const router = express.Router()
 
 
-router.get('/', getNote)
+router.get('/', getFann)
 
-router.post('/post', notePost)
+router.post('/post', fannPost)
 
-router.get('/:id', getByIdNote)
+router.get('/:id', getByIdFann)
 
 router.delete('/:id',deleteById)
 
