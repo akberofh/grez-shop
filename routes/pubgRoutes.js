@@ -1,14 +1,14 @@
 import express from 'express'
-import { deleteById, getByIdNote, getNote, notePost } from '../controllers/pubgController.js'
+import { deleteById, getByIdPubg, getPubg, pubgPost } from '../controllers/pubgController.js'
 
 const router = express.Router()
 
 
-router.get('/', getNote)
+router.get('/', getPubg)
 
-router.post('/post', notePost)
+router.post('/post', pubgPost)
 
-router.get('/:id', getByIdNote)
+router.get('/:id', getByIdPubg)
 
 router.delete('/:id',deleteById)
 
