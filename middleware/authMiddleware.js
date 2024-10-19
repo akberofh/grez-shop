@@ -9,7 +9,7 @@ const userControlAuth = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, 'YOUR_SECRET_KEY'); // Token'ı çöz ve doğrula
+    const decoded = jwt.verify(token, 'menimkodum12'); // Token'ı çöz ve doğrula
     req.user = decoded; // Kullanıcı bilgilerini req.user'a ata
     next();
   } catch (err) {
