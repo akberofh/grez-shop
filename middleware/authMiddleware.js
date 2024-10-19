@@ -1,25 +1,20 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/userModel.js';
 
-const userControlAuth = async (req, res, next) => {
-    let token;
 
-    token = req.cookies.jwt;
+const userControlAuth = (req, res, next) => {
+  const token = req.cookies.token || req.header('Authorization')?.split(' ')[1]; // Token'ı al
 
-    if (token) {
-        try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  if (!token) {
+    return res.status(401).json({ message: 'No token provided' });
+  }
 
-            req.user = await User.findById(decoded.userId).select('-password');
-
-            next();
-        } catch (error) {
-            console.error(error);
-            res.status(401).json({ message: 'Unauthorized - invalid token' });
-        }
-    } else {
-        res.status(401).json({ message: 'Unauthorized - token not found' });
-    }
+  try {
+    const decoded = jwt.verify(token, 'YOUR_SECRET_KEY'); // Token'ı çöz ve doğrula
+    req.user = decoded; // Kullanıcı bilgilerini req.user'a ata
+    next();
+  } catch (err) {
+    res.status(401).json({ message: 'Invalid token' });
+  }
 };
 
 const adminControlAuth = (req, res, next) => {
