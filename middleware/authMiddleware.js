@@ -22,4 +22,12 @@ const userControlAuth = async (req, res, next) => {
     }
 };
 
-export { userControlAuth };
+const adminControlAuth = (req, res, next) => {
+    if (req.user && req.user.userType === 'admin') {
+        next();
+    } else {
+        res.status(403).json({ message: 'Forbidden - only admins can perform this action' });
+    }
+};
+
+export { userControlAuth , adminControlAuth };
