@@ -18,7 +18,6 @@ const userSchema = mongoose.Schema(
         },
         photo: {
             type: String, // base64 encoded ucun string qebul edir
-            required: true,
             default: '',
         },
         userType: {
