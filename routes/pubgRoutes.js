@@ -1,13 +1,13 @@
 import express from 'express'
 import { deleteById, getByIdPubg, getPubg, pubgPost } from '../controllers/pubgController.js'
-import { adminControlAuth, userControlAuth } from '../middleware/authMiddleware.js'
+import { adminControlAuth,  } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
 
 
 router.get('/', getPubg)
 
-router.post('/post', adminControlAuth,  userControlAuth,pubgPost)
+router.post('/post', adminControlAuth,  pubgPost)
 
 router.get('/:id', getByIdPubg)
 

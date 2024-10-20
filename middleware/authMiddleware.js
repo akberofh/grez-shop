@@ -20,10 +20,11 @@ const userControlAuth = async (req, res, next) => {
     } else {
         res.status(401).json({ message: 'Unauthorized - token not found' });
     }
+
 };
 
 const adminControlAuth = (req, res, next) => {
-    if (req.user && req.user.userType === 'admin') {
+    if (req.user && req.user.userType !== 'admin') {
         next();
     } else {
         res.status(403).json({ message: 'Forbidden - only admins can perform this action' });

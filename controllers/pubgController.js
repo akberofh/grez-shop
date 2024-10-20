@@ -10,7 +10,9 @@ const pubgPost = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+
 };
+
 
 const getPubg = async (req, res) => {
   try {
@@ -24,18 +26,23 @@ const getPubg = async (req, res) => {
 
 const getByIdPubg = async (req, res) => {
   const { id } = req.params;
+
+  // ID'nin geçerli bir ObjectId olup olmadığını kontrol et
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "Geçersiz ID formatı" });
+  }
+
   try {
     const getById = await PubgModel.findById(id);
     if (!getById) {
-      return res.status(404).json({ error: "Note not found" });
+      return res.status(404).json({ error: "Not bulunamadı" });
     }
     res.json({ getById });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: "Sunucu Hatası" });
   }
 };
-
 const deleteById = async (req, res) => {
   const { id } = req.params;
 
