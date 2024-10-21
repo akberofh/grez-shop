@@ -7,7 +7,7 @@ const authUser = async (req, res) => {
         const user = await User.findOne({ email });
 
         if (user && (await user.checkPassword(password))) {
-            generateToken(res, user._id);
+            generateToken(res, user._id , user.userType);
             res.status(201).json({
                 _id: user._id,
                 name: user.name,
@@ -63,13 +63,14 @@ const registerUser = async (req, res) => {
         });
 
         if (user) {
-            generateToken(res, user._id);
+            generateToken(res, user._id , user.userType);
             res.status(201).json({
                 _id: user._id,
                 email: user.email,
                 name: user.name,
                 photo: user.photo,
                 userType: user.userType,
+                
             });
         } else {
             res.status(400).json({ message: "User not added" });
