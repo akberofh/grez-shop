@@ -15,7 +15,7 @@ router.get('/:id', getByIdTiktok)
 router.delete('/:id', adminControlAuth,deleteById)
 
 router.patch('/:id', (req, res) => {
-    //req.params.id
+    
     res.json({msg: 'update metod'})
 })
 
