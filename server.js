@@ -16,6 +16,7 @@ const server = http.createServer(app);
 app.use(express.json());
 app.use(cors({
     origin: ['https://grez-shop.vercel.app', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'DELETE'],
     credentials: true,
 }));
 app.use(express.urlencoded({ extended: true }));
