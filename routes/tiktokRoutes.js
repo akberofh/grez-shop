@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/', getTiktok)
 
-router.post('/post', tiktokPost)
+router.post('/postt', tiktokPost)
 
 router.get('/:id', getByIdTiktok)
 

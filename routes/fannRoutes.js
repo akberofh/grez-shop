@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/', getFann)
 
-router.post('/post',  fannPost)
+router.post('/postt',  fannPost)
 
 router.get('/:id', getByIdFann)
 

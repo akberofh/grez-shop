@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/', getPubg)
 
-router.post('/post',   pubgPost)
+router.post('/postt',   pubgPost)
 
 router.get('/:id', getByIdPubg)
 
