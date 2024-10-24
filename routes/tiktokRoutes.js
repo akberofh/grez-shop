@@ -1,6 +1,5 @@
 import express from 'express'
 import { deleteById, getByIdTiktok, getTiktok, tiktokPost } from '../controllers/tiktokController.js'
-import { adminControlAuth } from '../middleware/authMiddleware.js'
 
 
 const router = express.Router()
@@ -8,11 +7,11 @@ const router = express.Router()
 
 router.get('/', getTiktok)
 
-router.post('/post', adminControlAuth,tiktokPost)
+router.post('/post', tiktokPost)
 
 router.get('/:id', getByIdTiktok)
 
-router.delete('/:id', adminControlAuth,deleteById)
+router.delete('/:id', deleteById)
 
 router.patch('/:id', (req, res) => {
     

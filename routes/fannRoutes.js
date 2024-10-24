@@ -1,6 +1,5 @@
 import express from 'express'
 import { deleteById, getByIdFann, getFann, fannPost } from '../controllers/fannController.js'
-import { adminControlAuth } from '../middleware/authMiddleware.js'
 
 
 const router = express.Router()
@@ -8,11 +7,11 @@ const router = express.Router()
 
 router.get('/', getFann)
 
-router.post('/post', adminControlAuth, fannPost)
+router.post('/post',  fannPost)
 
 router.get('/:id', getByIdFann)
 
-router.delete('/:id', adminControlAuth,deleteById)
+router.delete('/:id', deleteById)
 
 router.patch('/:id', (req, res) => {
     //req.params.id
