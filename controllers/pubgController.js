@@ -1,16 +1,31 @@
 import PubgModel from "../models/pubgModel.js";
 
 const pubgPost = async (req, res) => {
-  const { title, description, thumbnail, price,distance ,catagory} = req.body;
+  const { title, description, thumbnail, price, distance, catagory } = req.body;
+  let photo = '';
+
+  // Eğer bir fotoğraf dosyası mevcutsa base64 olarak dönüştür
+  if (req.file) {
+    photo = req.file.buffer.toString('base64');
+  }
 
   try {
-    const pubg = await PubgModel.create({ title, description, thumbnail,price ,distance ,catagory});
+    // Yeni pubg postu oluştur ve fotoğrafı ekle
+    const pubg = await PubgModel.create({
+      title,
+      description,
+      thumbnail,
+      price,
+      distance,
+      catagory,
+      photo
+    });
+
     res.status(201).json({ pubg });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-
 };
 
 

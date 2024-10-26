@@ -8,8 +8,10 @@ const tiktokModel = mongoose.Schema({
   description: {
     type: String,
   },
-  thumbnail: {
-    type: String,
+  photo: {
+    type: String, // base64 encoded ucun string qebul edir
+ 
+    default: '',
   },
   price: {
     type: String,

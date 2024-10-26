@@ -1,5 +1,6 @@
 import express from 'express'
 import { deleteById, getByIdFann, getFann, fannPost } from '../controllers/fannController.js'
+import upload from '../middleware/uploadMiddleware.js'
 
 
 const router = express.Router()
@@ -7,7 +8,7 @@ const router = express.Router()
 
 router.get('/', getFann)
 
-router.post('/postt',  fannPost)
+router.post('/postt',   upload.single('photo'),fannPost)
 
 router.get('/:id', getByIdFann)
 

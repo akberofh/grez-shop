@@ -1,10 +1,26 @@
 import FannModel from "../models/fannModel.js";
 
 const fannPost = async (req, res) => {
-  const { title, description, thumbnail, price,distance ,catagory} = req.body;
+  const { title, description, thumbnail, price, distance, catagory } = req.body;
+  let photo = '';
+
+  // Eğer bir fotoğraf dosyası mevcutsa base64 olarak dönüştür
+  if (req.file) {
+    photo = req.file.buffer.toString('base64');
+  }
 
   try {
-    const fann = await FannModel.create({ title, description, thumbnail,price ,distance ,catagory});
+    // Yeni fann postu oluştur ve fotoğrafı ekle
+    const fann = await FannModel.create({
+      title,
+      description,
+      thumbnail,
+      price,
+      distance,
+      catagory,
+      photo
+    });
+
     res.status(201).json({ fann });
   } catch (error) {
     console.error(error);

@@ -1,16 +1,35 @@
 import TiktokModel from "../models/tiktokModel.js";
 
 const tiktokPost = async (req, res) => {
-  const { title, description, thumbnail, price,distance ,catagory} = req.body;
+  const { title, description, thumbnail, price, distance, catagory } = req.body;
+  let photo = '';
+
+  // Eğer bir fotoğraf dosyası mevcutsa base64 olarak dönüştür
+  if (req.file) {
+    photo = req.file.buffer.toString('base64');
+  }
 
   try {
-    const tiktok = await TiktokModel.create({ title, description, thumbnail,price ,distance ,catagory});
+    // Yeni TikTok postu oluştur ve fotoğrafı ekle
+    const tiktok = await TiktokModel.create({
+      title,
+      description,
+      thumbnail,
+      price,
+      distance,
+      catagory,
+      photo
+    });
+
     res.status(201).json({ tiktok });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+
+
 
 const getTiktok = async (req, res) => {
   try {

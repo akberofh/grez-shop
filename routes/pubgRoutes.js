@@ -1,12 +1,13 @@
 import express from 'express'
 import { deleteById, getByIdPubg, getPubg, pubgPost } from '../controllers/pubgController.js'
+import upload from '../middleware/uploadMiddleware.js'
 
 const router = express.Router()
 
 
 router.get('/', getPubg)
 
-router.post('/postt',   pubgPost)
+router.post('/postt',  upload.single('photo'), pubgPost)
 
 router.get('/:id', getByIdPubg)
 

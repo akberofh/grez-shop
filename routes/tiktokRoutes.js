@@ -1,5 +1,6 @@
 import express from 'express'
 import { deleteById, getByIdTiktok, getTiktok, tiktokPost } from '../controllers/tiktokController.js'
+import upload from '../middleware/uploadMiddleware.js';
 
 
 const router = express.Router()
@@ -7,7 +8,7 @@ const router = express.Router()
 
 router.get('/', getTiktok)
 
-router.post('/postt', tiktokPost)
+router.post('/postt', upload.single('photo'), tiktokPost)
 
 router.get('/:id', getByIdTiktok)
 
