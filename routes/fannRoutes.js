@@ -1,5 +1,5 @@
 import express from 'express'
-import { deleteById, getByIdFann, getFann, fannPost } from '../controllers/fannController.js'
+import { deleteById, getByIdFann, getFann, fannPost, fannUpdateProfil } from '../controllers/fannController.js'
 import upload from '../middleware/uploadMiddleware.js'
 
 
@@ -13,6 +13,9 @@ router.post('/postt',   upload.single('photo'),fannPost)
 router.get('/:id', getByIdFann)
 
 router.delete('/:id', deleteById)
+
+router.put('/postt/:id', upload.single('photo'), fannUpdateProfil);
+
 
 router.patch('/:id', (req, res) => {
     //req.params.id

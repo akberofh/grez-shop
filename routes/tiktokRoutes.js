@@ -1,5 +1,5 @@
 import express from 'express'
-import { deleteById, getByIdTiktok, getTiktok, tiktokPost } from '../controllers/tiktokController.js'
+import { deleteById, getByIdTiktok, getTiktok, tiktokPost, tiktokUpdateProfil } from '../controllers/tiktokController.js'
 import upload from '../middleware/uploadMiddleware.js';
 
 
@@ -14,6 +14,7 @@ router.get('/:id', getByIdTiktok)
 
 router.delete('/:id', deleteById)
 
+router.put('/postt/:id', upload.single('photo'), tiktokUpdateProfil);
 router.patch('/:id', (req, res) => {
     
     res.json({msg: 'update metod'})
