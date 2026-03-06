@@ -8,17 +8,23 @@ import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import http from 'http';
+
 dotenv.config();
+
 const app = express();
 const server = http.createServer(app);
 
-
 app.use(express.json());
+
 app.use(cors({
-    origin: '*',
-   
-   
+  origin: ["https://grezzadmin-ha9m.vercel.app"],
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
+  allowedHeaders: ["Content-Type","Authorization"],
+  credentials: true
 }));
+
+app.options('*', cors());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
@@ -32,11 +38,9 @@ app.use('/api/pubg', pubgRoutes);
 app.use('/api/tiktok', tiktokRoutes);
 
 app.get("/", (req, res) => {
-    res.json({
-        message: "Welcome",
-    });
+  res.json({
+    message: "Welcome",
+  });
 });
 
-
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
