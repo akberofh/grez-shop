@@ -24,7 +24,8 @@ app.use(cors({
   // İcazə verilən origin-ləri bura əlavə et
   origin: [
     "https://grezzadmin-ha9m.vercel.app",
-    "https://grez-shop-lf6t.vercel.app" // Əgər mağaza saytından da istek gələcəksə
+    "https://grez-shop-lf6t.vercel.app",
+    "https://grez.az"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
