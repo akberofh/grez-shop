@@ -25,7 +25,8 @@ app.use(cors({
   origin: [
     "https://grezzadmin-ha9m.vercel.app",
     "https://grez-shop-lf6t.vercel.app",
-    "https://grez.az"
+    "https://grez.az",
+    "https://www.grez.az"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
