@@ -26,6 +26,7 @@ app.use(cors({
     "https://grezzadmin-ha9m.vercel.app",
     
     "https://grez.az",
+    "https://grez.az/grezAdminPanel",
     "https://www.grez.az"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
