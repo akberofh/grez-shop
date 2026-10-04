@@ -26,6 +26,7 @@ app.use(cors({
     "https://grezzadmin-ha9m.vercel.app",
     
     "https://grez.az",
+    "http://localhost:3000",
     "https://grez.az/grezAdminPanel",
     "https://www.grez.az"
   ],
